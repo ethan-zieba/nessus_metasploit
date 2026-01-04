@@ -26,6 +26,8 @@ The emulated IO-APIC by Virtualbox is apparently wrong, which causes the VM to s
 Using only one CPU core fixes the issue (IO-APIC was initially used to route hardware interrupts to the parallel CPUs), or adding "noapic" option to the GRUB when booting.
 [APIC Wikipedia](https://en.wikipedia.org/wiki/Advanced_Programmable_Interrupt_Controller)
 
+This virtual machine contains a wide range of tools, databases, open ports... including backdoors and misconfigs. It’s a good sandbox to start with.
+
 ## Debian VM
 
 Typical VM creation, with Nessus and MSF installed, nothing much to say here.
