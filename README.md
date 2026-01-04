@@ -23,7 +23,7 @@ A Rapid7 virtual machine running Ubuntu 8.04, widely known to be vulnerable to n
 Running it in a host-only network, using VirtualBox.
 Getting a "VirtualBox: "Mp-bios bug:8254 timer not connected to io-apic" during the install.
 The emulated IO-APIC by Virtualbox is apparently wrong, which causes the VM to stop booting.
-Using only one CPU core fixes the issue, or adding "noapic" option to the GRUB when booting.
+Using only one CPU core fixes the issue (IO-APIC was initially used to route hardware interrupts to the parallel CPUs), or adding "noapic" option to the GRUB when booting.
 
 ## Debian VM
 
