@@ -19,6 +19,9 @@ Metasploit is a huge framework for penetration testing.
 It has a vast library of payloads, with a strong focus on active testing.
 Vuln-exploit, post-exploit, privesc and lateral-movement testing. 
 
+Using [payloads](https://docs.rapid7.com/metasploit/working-with-payloads/)
+
+
 ## Metasploitable 2
 
 A Rapid7 virtual machine running Ubuntu 8.04, widely known to be vulnerable to numerous attacks.
@@ -60,6 +63,7 @@ We set RHOSTS, RPORT, and FILENAME, then gain access to the file, which would ty
 Next, we'll leverage the VSFTPd 2.3.4 backdoor
 We use the Metasploit unix/ftp/vsftpd_234_backdoor
 We run the Metasploit unix/ftp/vsftpd_234_backdoor module.
+We use the [default payload](https://www.rapid7.com/db/modules/payload/cmd/unix/interact/)
 This gives us a shell, which we can make interactive with: `python -c 'import pty; pty.spawn("/bin/bash")'`
 
 With an interactive shell, we can now use the su command to impersonate any user.
