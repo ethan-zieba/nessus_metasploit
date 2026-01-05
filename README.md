@@ -35,6 +35,7 @@ This virtual machine contains a wide range of tools, databases, open ports, alon
 ## Debian VM
 
 Typical VM creation, with Nessus and MSF installed, nothing much to say here.
+Once the Nessus part of the project is done, we'll use a Parrot OS environment as it will be more complete for our kind of work.
 
 ## First scans
 
