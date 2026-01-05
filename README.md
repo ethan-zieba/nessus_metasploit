@@ -11,6 +11,7 @@ Thorough reporting.
 Vast plugin database.
 NASL (Nessus Attack Scripting Language) (similar to Perl/C) for writing custom plugins and scan templates.
 [Nessus Wikipedia](https://en.wikipedia.org/wiki/Nessus_(software))
+[Tenable Documentation](https://docs.tenable.com/)
 
 ## Metasploit ?
 
