@@ -52,3 +52,13 @@ We get our hands on a lot of critical vulnerabilities, an interesting one could 
 We'll use the msf tomcat_ghostcat plugin
 We set RHOSTS and RPORT, FILENAME
 And we get access to the file, which would normally be unreadable unless privileged
+
+Now, leveraging the VSFTPd 2.3.4 backdoor
+We use the Metasploit unix/ftp/vsftpd_234_backdoor
+This gives us a shell, which we can make more interactive using: `python -c 'import pty; pty.spawn("/bin/bash")'`
+
+Having an interactive shell enables su command usage, so that we can impersonate any user.
+From here, we can enumerate the users with the `/etc/passwd` file, check for services configurations, look for private ssh keys...
+
+### Establishing persistence
+
