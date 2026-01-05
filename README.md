@@ -10,6 +10,7 @@ Supports different scoring systems.
 Thorough reporting.
 Vast plugin database.
 NASL (Nessus Attack Scripting Language) (similar to Perl/C) for writing custom plugins and scan templates.
+https://en.wikipedia.org/wiki/Nessus_(software)
 
 ## Metasploit ?
 
