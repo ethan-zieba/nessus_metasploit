@@ -68,6 +68,7 @@ From here, we can enumerate the users by reading the /etc/passwd file, check for
 
 To establish persistence, we’ll use udev.
 Great work done [here](https://ch4ik0.github.io/en/posts/leveraging-Linux-udev-for-persistence/)
+
 By default, udev cannot start reverse shells, so we need to detach the script from its execution, maybe using `at`
 For this, we check if at is installed first:
 `which at`
