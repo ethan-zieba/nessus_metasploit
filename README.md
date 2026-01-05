@@ -45,3 +45,10 @@ The Host Discovery scan is mainly ICMP-, TCP-, UDP-, ARP-based. It uses various 
 
 The Basic Network Scan goes further. It uses more probes, active plugins, OS fingerprinting, service enum, vulnerability assessment. If credentials are provided, it can log into systems to spot misconfigurations. It checks for known CVEs and outdated software. 
 
+## Using Metasploit
+
+We get our hands on a lot of critical vulnerabilities, an interesting one could be a vuln with Apache Tomcat AJP (AJP is used for request forwarding, it can allow attackers to access local app resources due to bad trust assumptions).
+
+We'll use the msf tomcat_ghostcat plugin
+We set RHOSTS and RPORT, FILENAME
+And we get access to the file, which would normally be unreadable unless privileged
